@@ -34,6 +34,9 @@ class Main:
             if c.phone == a:
                 s = input("Enter the new username: ")
                 s1 = input("Enter the new phone: ")
+                a1 = Contact(s, s1)
+                self.contacts.remove(c)
+                self.contacts.append(a1)
 
     def del_contact(self):
         a = input("Enter the contact: ")
@@ -41,5 +44,18 @@ class Main:
             if c.phone == a:
                 self.contacts.remove(c)
 
+    def send_sms(self):
+        t = input("Enter the number: ")
+        for c in self.contacts:
+            if c.phone == t:
+                t1 = input("Enter the text: ")
+                t2 = SMS(c.name, t, t1)
+                self.massages.append(t2)
 
+    def print_sms(self):
+        for m in self.massages:
+            print(f"{m.name}: {m.phone}, {m.massage}")
+
+    def del_massages(self):
+        for m in self.massages:
 
