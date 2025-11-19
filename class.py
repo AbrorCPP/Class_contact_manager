@@ -45,15 +45,24 @@ class Main:
             if c.phone == a:
                 s = input("Enter the new username: ")
                 s1 = input("Enter the new phone: ")
-                a1 = Contact(s, s1)
+                a2 = Contact(s, s1)
                 self.contacts.remove(c)
-                self.contacts.append(a1)
+                self.contacts.append(a2)
 
     def del_contact(self):
         a = input("Enter the contact: ")
         for c in self.contacts:
             if c.phone == a:
                 self.contacts.remove(c)
+
+    def idd_corr_sms(self):
+        t = []
+        for i in range(len(self.massages)):
+            b = i+1
+            s = SMS(self.massages[b-1].name, self.massages[b-1].phone,self.massages[b-1].massage,i)
+            t.append(s)
+        self.massages.clear()
+        self.massages.append(t)
 
     def send_sms(self):
         t = input("Enter the number: ")
@@ -73,12 +82,32 @@ class Main:
             if m.id == t:
                 self.massages.remove(m)
 
-    def idd_corr_sms(self):
-        t = []
-        for i in range(len(self.massages)):
-            b = i+1
-            s = SMS(self.massages[b-1].name, self.massages[b-1].phone,self.massages[b-1].massage,i)
-            t.append(s)
-        self.massages.clear()
-        self.massages.append(t)
+m1 = Main()
 
+while True:
+    a = input(" 1.Contacts\n 2.SMS\n3.Exit\n--->")
+    if a == "1":
+        while True:
+            a1 = input("1.Add contact\n2.Print contact\n3.Edit contact\n4.Delete contact\n5.Exit\n--->")
+            if a == "1":
+                m1.con_add()
+            elif a == "2":
+                m1.con_print()
+            elif a == "3":
+                m1.con_edit()
+            elif a == "4":
+                m1.del_contact()
+            else:
+                break
+    if a == "2":
+        while True:
+            m1.idd_corr_sms()
+            a2 = input("1.Send SMS\n2.Delete SMS\n3.Exit\n--->")
+            if a == "1":
+                m1.send_sms()
+            elif a == "2":
+                m1.del_massages()
+            else:
+                break
+    else:
+        break
