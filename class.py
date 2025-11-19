@@ -24,7 +24,6 @@ class Main:
         self.contacts = []
         self.messages = []
 
-    # IDlarni qayta tartiblash (0,1,2,...)
     def fix_ids_contacts(self):
         for i, c in enumerate(self.contacts):
             c.id = i
@@ -33,21 +32,18 @@ class Main:
         for i, m in enumerate(self.messages):
             m.id = i
 
-    # Contact qo'shish
     def con_add(self):
         name = input("Enter username: ")
         phone = input("Enter phone: ")
         self.contacts.append(Contact(name, phone, len(self.contacts)))
         print("Added!")
 
-    # Contactlarni chiqarish
     def con_print(self):
         if not self.contacts:
             print("No contacts.")
         for c in self.contacts:
             print(c)
 
-    # Contact tahrirlash
     def con_edit(self):
         phone = input("Enter contact phone: ")
         for c in self.contacts:
@@ -60,7 +56,6 @@ class Main:
                 return
         print("Not found!")
 
-    # Contact o'chirish
     def del_contact(self):
         phone = input("Enter contact phone: ")
         for c in self.contacts:
@@ -71,7 +66,6 @@ class Main:
                 return
         print("Not found!")
 
-    # SMS jo'natish
     def send_sms(self):
         phone = input("Enter number: ")
         for c in self.contacts:
@@ -82,14 +76,12 @@ class Main:
                 return
         print("Contact not found!")
 
-    # SMSlarni chiqarish
     def print_sms(self):
         if not self.messages:
             print("No SMS.")
         for m in self.messages:
             print(m)
 
-    # SMS o'chirish
     def del_sms(self):
         sms_id = int(input("Enter SMS ID: "))
         for m in self.messages:
